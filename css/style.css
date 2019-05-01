@@ -1,0 +1,50 @@
+td a.butt.discord {
+    color: #E96B24 !important;
+    border: 3px solid #E96B24 !important;
+}
+td a.butt.discord:hover {
+    color: #ffffff !important;
+    background: #E96B24 !important;
+}
+
+.field-label-responsive {
+    padding-top: .5rem;
+    text-align: right;
+}
+
+input.error{
+    border-color: red;
+    background-color: #ffcfcf;
+}
+input.error:focus{
+    background-color: #ffcfcf;
+}
+
+
+select.error{
+    border-color: red;
+    background-color: #ffcfcf;
+}
+select.error:focus{
+    background-color: #ffcfcf;
+}
+
+input.warning{
+    border-color: orange;
+    background-color: #ffffd7;
+}
+input.warning:focus{
+    background-color: #ffffd7;
+}
+
+select.warning{
+    border-color: orange;
+    background-color: #ffffd7;
+}
+select.warning:focus{
+    background-color: #ffffd7;
+}
+
+select.form-control {
+    height: auto !important;
+}

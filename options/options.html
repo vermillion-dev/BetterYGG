@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title>Flexgg Options</title>
+    <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #discordIntegrationSection {
+            display: none;
+        }
+        #displayAddCategoriesSection {
+            display: none;
+        }
+        #addCategoriesSection {
+            display: none;
+        }
+        ul {
+            list-style-type: none;
+        }
+        li {
+            margin: 0 0 5px 0;
+        }
+        li.section {
+            margin: 15px 0 5px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body cz-shortcut-listen="true">
+    <img class="center" src="../img/ygg.png" id="yggImage"><br/>
+    <ul>
+        <li>
+            <span>Ygg token: </span>
+            <input id="yggToken" type="text" size="35"/>
+        </li>
+        <li class="section">
+            <span>Afficher le formulaire discord: </span>
+            <input id="displayDiscord" type="checkbox"/>
+        </li>
+        <div id="discordIntegrationSection">
+            <li>
+                <span>Discord Webhook url: </span>
+                <input id="discordWebhookUrl" type="text" size="150"/>
+            </li>
+            <li>
+                <span>Discord Username: </span>
+                <input id="discordUserName" type="text"/>
+            </li>
+        </div>
+        <li id="displayAddCategoriesSection" class="section">
+            <span>Modifier les cat&eacute;gories: </span>
+            <input id="displayAddCategories" type="checkbox"/>
+        </li>
+        <div id="addCategoriesSection">
+            <li>
+                <button id="saveCategories">Sauvegarder</button>
+                <button id="restoreCategories">Restaurer valeurs par d&eacute;faut</button>
+            </li>
+            <li>
+                <table id="categoriesTable">
+                    <thead>
+                        <tr>
+                            <th>Nom de cat&eacute;gorie</th>
+                            <th>Saisonnier</th>
+                            <th>Url sur YGG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </li>
+        </div>
+    </ul>
+
+    <script src="options.js"></script>
+</body>
+</html>
