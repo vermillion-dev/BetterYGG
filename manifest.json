@@ -26,17 +26,17 @@
     ],
     "content_scripts": [
       {
-        "matches": ["https://*.yggtorrent.gg/torrent/*"],
+        "matches": ["https://*.yggtorrent.ch/torrent/*"],
         "run_at": "document_idle",
         "js": ["js/utilsFunctions.js", "contentScripts/addTorrent/functions.js", "contentScripts/addTorrent/addTorrent.js"]
       },
       {
-        "matches": ["https://*.yggtorrent.gg/"],
+        "matches": ["https://*.yggtorrent.ch/"],
         "run_at": "document_idle",
         "js": [ "contentScripts/homePage.js"]
       },
       {
-        "matches": ["https://*.yggtorrent.gg/*"],
+        "matches": ["https://*.yggtorrent.ch/*"],
         "run_at": "document_idle",
         "js": ["js/utilsFunctions.js", "contentScripts/allPages/allPages.js"]
       }
