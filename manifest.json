@@ -22,6 +22,7 @@
     "web_accessible_resources" : [
       "contentScripts/addTorrent/accessAddTorrent.js",
       "contentScripts/allPages/accessAllPages.js",
+      "contentScripts/search/accessSearch.js",
       "css/style.css",
       "img/download.png"
     ],

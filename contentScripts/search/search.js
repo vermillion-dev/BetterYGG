@@ -1,10 +1,5 @@
-var path = window.location.toString();
-var args = path.split('&');
-if (args[args.length -1] === 'do=search') {
-    window.location.replace(path + '&order=desc&sort=publish_date');
-}
-else {
-    var table = document.getElementsByTagName('tbody')[1];
+/* Inject scripts don't forget to add them to web_accessible_resources in manifest */
+injectScript(chrome.extension.getURL('contentScripts/search/accessSearch.js'), 'head');
 
     function addDlButton(idx, torrentId, yggToken) {
         var cell = table.rows[idx].cells[2];
