@@ -11,13 +11,16 @@ Les catégories ainsi que les urls reliées sont modifiable dans les options.
 
 
 Ajustements mineurs: 
+
 [1.0]
 - Enlève la vidéo YouTube sur l'écran d’accueil
 - Fixe la barre section sur la gauche pour qu'elle se ferme automatiquement en fonction de la taille de l'écran.
 - Enlève la notification appelant à faire un don.
+
 [1.1]
 - Ajoute un bouton de Téléchargement dans le résultat de la recherche
 - Trie la recherche par date par défaut
+
 [1.2]
 - Le tri et l'ordre des recherches est personnalisable dans les options
 - Correction du tri par nbr de commentaire qui ne fonctionne pas de base...
