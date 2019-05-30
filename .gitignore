@@ -1,3 +1,4 @@
 *.zip
 .vscode
 Capture
+.eslintrc.json

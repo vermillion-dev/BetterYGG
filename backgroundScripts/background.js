@@ -22,13 +22,13 @@ var defaults = {
     storageSchema: 1 // Increment this when data format changes
 };
 
-chrome.runtime.onInstalled.addListener(function(details){
-    if(details.reason === "install"){
+chrome.runtime.onInstalled.addListener(function (details) {
+    if (details.reason === "install") {
         chrome.storage.sync.set(defaults);
         chrome.storage.sync.set({ 'categories': defaults.defaultCategories});
         chrome.storage.sync.set({ 'searchSort': defaults.defaultSearchSort});
         chrome.storage.sync.set({ 'searchOrder': defaults.defaultSearchOrder});
-    } else if(details.reason === "update"){
+    } else if (details.reason === "update") {
         migrateData();
     }
 });

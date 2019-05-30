@@ -1,6 +1,6 @@
 hideSidebar();
 
-$(window).on('resize', function(){
+$(window).on('resize', function () {
     hideSidebar();
 });
 

@@ -8,7 +8,7 @@ var storedValues = [
     'categories',
     'searchSort',
     'searchOrder'
-]
+];
 
 var yggToken = document.getElementById('yggToken');
 var discordWebhookUrl = document.getElementById('discordWebhookUrl');
@@ -21,103 +21,103 @@ var displayAddCategoriesSection = document.getElementById('displayAddCategoriesS
 var addCategories = document.getElementById('addCategoriesSection');
 
 var categoriesTable = document.getElementById('categoriesTable').children[1];
-var buttonSaveCategories =  document.getElementById('saveCategories');
-var buttonRestoreCategories =  document.getElementById('restoreCategories');
+var buttonSaveCategories = document.getElementById('saveCategories');
+var buttonRestoreCategories = document.getElementById('restoreCategories');
 var defaultCategories = [];
 var categories = [];
 
 var searchSort = document.getElementById('searchSort');
 var searchOrder = document.getElementById('searchOrder');
 
-chrome.storage.sync.get(storedValues, function(value){
-    if(value.yggToken)
+chrome.storage.sync.get(storedValues, function (value) {
+    if (value.yggToken) {
         yggToken.value = value.yggToken;
-    if(value.discordWebhookUrl)
+    }
+    if (value.discordWebhookUrl) {
         discordWebhookUrl.value = value.discordWebhookUrl;
-    if(value.discordUserName)
+    }
+    if (value.discordUserName) {
         discordUserName.value = value.discordUserName;
-    if(value.displayDiscord){
+    }
+    if (value.displayDiscord) {
         displayDiscord.checked = value.displayDiscord;
-        if (displayDiscord.checked){
+        if (displayDiscord.checked) {
             discordIntegration.style.display = "block";
             displayAddCategoriesSection.style.display = "block";
-            if (displayAddCategories.checked){
+            if (displayAddCategories.checked) {
                 addCategories.style.display = "block";
             }
-        }
-        else {
+        } else {
             discordIntegration.style.display = "none";
             displayAddCategoriesSection.style.display = "none";
             addCategories.style.display = "none";
         }
-        if(value.displayAddCategories){
+        if (value.displayAddCategories) {
             displayAddCategories.checked = value.displayAddCategories;
-            if (displayAddCategories.checked){
+            if (displayAddCategories.checked) {
                 addCategories.style.display = "block";
-            }
-            else {
+            } else {
                 addCategories.style.display = "none";
             }
         }
     }
-    if(value.categories){
+    if (value.categories) {
         categories = value.categories;
         makeCategoriesTable(categories);
     }
-    if(value.defaultCategories){
+    if (value.defaultCategories) {
         defaultCategories = value.defaultCategories;
-        buttonSaveCategories.addEventListener('click', saveCategories)
-        buttonRestoreCategories.addEventListener('click', restoreDefaultCategories)
+        buttonSaveCategories.addEventListener('click', saveCategories);
+        buttonRestoreCategories.addEventListener('click', restoreDefaultCategories);
     }
-    if(value.searchSort){
+    if (value.searchSort) {
         document.querySelector('#searchSort option[value=' + value.searchSort + ']').selected = "selected";
     }
-    if(value.searchOrder){
+    if (value.searchOrder) {
         document.querySelector('#searchOrder option[value=' + value.searchOrder + ']').selected = "selected";
     }
 });
 
 function addToStorage(name, value) {
-    chrome.storage.sync.set({ [name]: value });
+    chrome.storage.sync.set({[name]: value});
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    yggToken.addEventListener('input', function(){
+    yggToken.addEventListener('input', function () {
         addToStorage('yggToken', this.value);
     });
-    discordWebhookUrl.addEventListener('input', function(){
+    discordWebhookUrl.addEventListener('input', function () {
         addToStorage('discordWebhookUrl', this.value);
     });
-    discordUserName.addEventListener('input', function(){
+    discordUserName.addEventListener('input', function () {
         addToStorage('discordUserName', this.value);
     });
-    displayDiscord.addEventListener('input', function(){
+    displayDiscord.addEventListener('input', function () {
         addToStorage('displayDiscord', this.checked);
-        if (this.checked){
+        if (this.checked) {
             discordIntegration.style.display = "block";
             displayAddCategoriesSection.style.display = "block";
-            if (displayAddCategories.checked){
+            if (displayAddCategories.checked) {
                 addCategories.style.display = "block";
             }
-        }
-        else {
+        } else {
             discordIntegration.style.display = "none";
             displayAddCategoriesSection.style.display = "none";
             addCategories.style.display = "none";
         }
     });
-    displayAddCategories.addEventListener('input', function(){
+    displayAddCategories.addEventListener('input', function () {
         addToStorage('displayAddCategories', this.checked);
-        if (this.checked)
+        if (this.checked) {
             addCategories.style.display = "block";
-        else {
+        } else {
             addCategories.style.display = "none";
         }
     });
-    searchSort.addEventListener('change', function(){
+    searchSort.addEventListener('change', function () {
         addToStorage('searchSort', this.options[this.selectedIndex].value);
     });
-    searchOrder.addEventListener('change', function(){
+    searchOrder.addEventListener('change', function () {
         addToStorage('searchOrder', this.options[this.selectedIndex].value);
     });
 });
@@ -127,20 +127,20 @@ document.addEventListener('DOMContentLoaded', function () {
 /***********************/
 
 function makeCategoriesArray() {
-    lines = Array.from(categoriesTable.children)
-    var categoriesArray = []
-    for(var i in lines){
+    var lines = Array.from(categoriesTable.children);
+    var categoriesArray = [];
+    for (var i in lines) {
         var line = lines[i];
-        name = line.getElementsByTagName('input').namedItem('name').value;
-        season = line.getElementsByTagName('input').namedItem('season').checked;
-        urls = line.getElementsByTagName('textarea').namedItem('urls').value;
-        urlsArray = urls.split('\n').filter(x => x != '')
-        if(name != ''){
+        var name = line.getElementsByTagName('input').namedItem('name').value;
+        var season = line.getElementsByTagName('input').namedItem('season').checked;
+        var urls = line.getElementsByTagName('textarea').namedItem('urls').value;
+        var urlsArray = urls.split('\n').filter(x => x !== '');
+        if (name !== '') {
             categoriesArray.push({
                 name: name,
                 season: season,
                 urls: urlsArray
-            })
+            });
         }
     }
     return categoriesArray;
@@ -148,18 +148,18 @@ function makeCategoriesArray() {
 
 function makeCategoriesTable(categories) {
     var tbody = document.createElement('tbody');
-    for (var i in categories){
+    for (var i in categories) {
         var line = categories[i];
         var tr = getTr(line.name, line.season, line.urls, "Supprimer", deleteLine);
-        tbody.appendChild(tr)
+        tbody.appendChild(tr);
     }
-    var tr = getTr('', false, [], "Ajouter", addLine);
-    tbody.appendChild(tr)
-    categoriesTable.parentNode.replaceChild(tbody, categoriesTable)
+    tr = getTr('', false, [], "Ajouter", addLine);
+    tbody.appendChild(tr);
+    categoriesTable.parentNode.replaceChild(tbody, categoriesTable);
     categoriesTable = tbody;
 }
 
-function getTr(name, season, urls, buttonText, buttonOnClick){
+function getTr(name, season, urls, buttonText, buttonOnClick) {
     var tr = document.createElement('tr');
 
     var tdName = document.createElement('td');
@@ -181,15 +181,15 @@ function getTr(name, season, urls, buttonText, buttonOnClick){
     var tdUrls = document.createElement('td');
     var textareaUrls = document.createElement('textarea');
     textareaUrls.name = "urls";
-    textareaUrls.rows="5";
-    textareaUrls.cols="75";
+    textareaUrls.rows = "5";
+    textareaUrls.cols = "75";
     textareaUrls.value = urls.join('\n');
     tdUrls.appendChild(textareaUrls);
     tr.appendChild(tdUrls);
 
     var tdTrash = document.createElement('td');
     var button = document.createElement('button');
-    button.innerText = buttonText
+    button.innerText = buttonText;
     button.addEventListener("click", buttonOnClick);
     tdTrash.appendChild(button);
     tr.appendChild(tdTrash);
@@ -201,26 +201,26 @@ function getTr(name, season, urls, buttonText, buttonOnClick){
 /* Events Handlers */
 /*******************/
 
-function addLine(){
-    this.innerText = "Supprimer"
+function addLine() {
+    this.innerText = "Supprimer";
     this.removeEventListener("click", addLine);
     this.addEventListener("click", deleteLine);
     var tr = getTr('', false, [], "Ajouter", addLine);
-    categoriesTable.appendChild(tr)
+    categoriesTable.appendChild(tr);
 }
 
-function deleteLine(){
-    this.parentElement.parentElement.remove()
+function deleteLine() {
+    this.parentElement.parentElement.remove();
 }
 
-function saveCategories(){
+function saveCategories() {
     categories = makeCategoriesArray();
     addToStorage('categories', categories);
     makeCategoriesTable(categories);
 }
 
-function restoreDefaultCategories(){
-    categories = defaultCategories
+function restoreDefaultCategories() {
+    categories = defaultCategories;
     addToStorage('categories', categories);
     makeCategoriesTable(categories);
 }

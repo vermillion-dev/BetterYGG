@@ -30,7 +30,7 @@
       {
         "matches": ["https://*.yggtorrent.ch/torrent/*"],
         "run_at": "document_idle",
-        "js": ["js/utilsFunctions.js", "contentScripts/addTorrent/functions.js", "contentScripts/addTorrent/addTorrent.js"]
+        "js": ["js/utilsFunctions.js", "contentScripts/addTorrent/addTorrent.js"]
       },
       {
         "matches": ["https://*.yggtorrent.ch/"],
