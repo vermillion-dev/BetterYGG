@@ -1,3 +1,15 @@
+var storedValues = [
+    'yggToken',
+    'discordWebhookUrl',
+    'discordUserName',
+    'displayDiscord',
+    'displayAddCategories',
+    'defaultCategories',
+    'categories',
+    'searchSort',
+    'searchOrder'
+]
+
 var yggToken = document.getElementById('yggToken');
 var discordWebhookUrl = document.getElementById('discordWebhookUrl');
 var discordUserName = document.getElementById('discordUserName');
@@ -14,7 +26,10 @@ var buttonRestoreCategories =  document.getElementById('restoreCategories');
 var defaultCategories = [];
 var categories = [];
 
-chrome.storage.sync.get(['yggToken', 'discordWebhookUrl', 'discordUserName', 'displayDiscord', 'displayAddCategories', 'categories', 'defaultCategories'], function(value){
+var searchSort = document.getElementById('searchSort');
+var searchOrder = document.getElementById('searchOrder');
+
+chrome.storage.sync.get(storedValues, function(value){
     if(value.yggToken)
         yggToken.value = value.yggToken;
     if(value.discordWebhookUrl)
@@ -54,6 +69,12 @@ chrome.storage.sync.get(['yggToken', 'discordWebhookUrl', 'discordUserName', 'di
         buttonSaveCategories.addEventListener('click', saveCategories)
         buttonRestoreCategories.addEventListener('click', restoreDefaultCategories)
     }
+    if(value.searchSort){
+        document.querySelector('#searchSort option[value=' + value.searchSort + ']').selected = "selected";
+    }
+    if(value.searchOrder){
+        document.querySelector('#searchOrder option[value=' + value.searchOrder + ']').selected = "selected";
+    }
 });
 
 function addToStorage(name, value) {
@@ -92,6 +113,12 @@ document.addEventListener('DOMContentLoaded', function () {
         else {
             addCategories.style.display = "none";
         }
+    });
+    searchSort.addEventListener('change', function(){
+        addToStorage('searchSort', this.options[this.selectedIndex].value);
+    });
+    searchOrder.addEventListener('change', function(){
+        addToStorage('searchOrder', this.options[this.selectedIndex].value);
     });
 });
 
