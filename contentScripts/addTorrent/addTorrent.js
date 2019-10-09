@@ -48,7 +48,7 @@ if (torrentTitle.includes('1080')) {
 var discordWebhookUrl, discordUserName, categories;
 chrome.storage.sync.get(['yggToken', 'discordWebhookUrl', 'discordUserName', 'displayDiscord', 'displayAddCategories', 'categories', 'defaultCategories'], function (value) {
     if (value.yggToken) {
-        downloadButton.setAttribute('href', "https://www2.yggtorrent.ch/rss/download?id=" + torrentId + "&passkey=" + value.yggToken);
+        downloadButton.setAttribute('href', "https://" + window.location.host + "/rss/download?id=" + torrentId + "&passkey=" + value.yggToken);
     } else {
         var alertYggToken = '<div id="error_ygg_button_alert" class="alert alert-danger" role="alert" style="margin-bottom:0;">Une erreur est survenue, Vérifiez que votre token Ygg soit chargé !</div>';
         if (document.readyState !== "complete") {

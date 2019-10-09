@@ -1,6 +1,6 @@
 {
     "name": "BetterYGG",
-    "version": "1.2",
+    "version": "1.2.2",
     "description": "Téléchargez des torrents sur YGG sans ètre connecté et autres !!!",
     "icons": {
       "16": "img/flexgg16.png",
@@ -28,22 +28,22 @@
     ],
     "content_scripts": [
       {
-        "matches": ["https://*.yggtorrent.ch/torrent/*"],
+        "matches": ["https://*.yggtorrent.pe/torrent/*"],
         "run_at": "document_idle",
         "js": ["js/utilsFunctions.js", "contentScripts/addTorrent/addTorrent.js"]
       },
       {
-        "matches": ["https://*.yggtorrent.ch/"],
+        "matches": ["https://*.yggtorrent.pe/"],
         "run_at": "document_idle",
         "js": [ "contentScripts/homePage.js"]
       },
       {
-        "matches": ["https://*.yggtorrent.ch/*"],
+        "matches": ["https://*.yggtorrent.pe/*"],
         "run_at": "document_idle",
         "js": ["js/utilsFunctions.js", "contentScripts/allPages/allPages.js"]
       },
       {
-        "matches": ["https://www2.yggtorrent.ch/engine/search*"],
+        "matches": ["https://*.yggtorrent.pe/engine/search*"],
         "run_at": "document_idle",
         "js": ["js/utilsFunctions.js", "contentScripts/search/search.js"]
 
