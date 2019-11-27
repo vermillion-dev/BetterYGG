@@ -185,7 +185,7 @@ function addToDiscord() {
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', discordWebhookUrl);
-    xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+    xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
         if (xhr.status === 204) {
            showAlert('valid_form_alert');
