@@ -8,7 +8,7 @@ var path = window.location.pathname;
 
 /* Add an info line to the table */
 var tableLines = document.querySelectorAll('table.infos-torrent tbody tr');
-var downloadLine = tableLines[1];
+var downloadLine = tableLines[0];
 var torrentInfo = downloadLine.cloneNode(true);
 torrentInfo.style = "display: none";
 downloadLine.insertAdjacentElement('afterend', torrentInfo);
