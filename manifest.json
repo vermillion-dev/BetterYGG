@@ -37,11 +37,6 @@
         "js": ["js/utilsFunctions.js", "contentScripts/addTorrent/addTorrent.js"]
       },
       {
-        "matches": ["https://*.yggtorrent.la/"],
-        "run_at": "document_idle",
-        "js": [ "contentScripts/homePage.js"]
-      },
-      {
         "matches": ["https://*.yggtorrent.la/*"],
         "run_at": "document_idle",
         "js": ["js/utilsFunctions.js", "contentScripts/allPages/allPages.js"]
