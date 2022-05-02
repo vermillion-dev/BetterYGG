@@ -1,6 +1,6 @@
 {
     "name": "BetterYGG",
-    "version": "1.2.8",
+    "version": "1.2.9",
     "description": "Téléchargez des torrents sur YGG sans ètre connecté et autres !!!",
     "icons": {
       "16": "img/flexgg16.png",
@@ -12,42 +12,46 @@
     },
     "options_page": "options/options.html",
     "background": {
-      "scripts": ["backgroundScripts/background.js"],
-      "persistent": false
+      "service_worker": "backgroundScripts/background.js"
     },
     "permissions": [
       "activeTab",
       "storage"
     ],
     "web_accessible_resources" : [
-      "contentScripts/addTorrent/accessAddTorrent.js",
-      "contentScripts/allPages/accessAllPages.js",
-      "contentScripts/search/accessSearch.js",
-      "css/style.css",
-      "img/download.png"
+      {
+        "resources": [
+          "contentScripts/addTorrent/accessAddTorrent.js",
+          "contentScripts/allPages/accessAllPages.js",
+          "contentScripts/search/accessSearch.js",
+          "css/style.css",
+          "img/download.png"
+        ],
+        "matches": ["https://*.yggtorrent.la/*"]
+      }
     ],
     "content_scripts": [
       {
-        "matches": ["https://*.yggtorrent.nz/torrent/*"],
+        "matches": ["https://*.yggtorrent.la/torrent/*"],
         "run_at": "document_idle",
         "js": ["js/utilsFunctions.js", "contentScripts/addTorrent/addTorrent.js"]
       },
       {
-        "matches": ["https://*.yggtorrent.nz/"],
+        "matches": ["https://*.yggtorrent.la/"],
         "run_at": "document_idle",
         "js": [ "contentScripts/homePage.js"]
       },
       {
-        "matches": ["https://*.yggtorrent.nz/*"],
+        "matches": ["https://*.yggtorrent.la/*"],
         "run_at": "document_idle",
         "js": ["js/utilsFunctions.js", "contentScripts/allPages/allPages.js"]
       },
       {
-        "matches": ["https://*.yggtorrent.nz/engine/search*"],
+        "matches": ["https://*.yggtorrent.la/engine/search*"],
         "run_at": "document_idle",
         "js": ["js/utilsFunctions.js", "contentScripts/search/search.js"]
 
       }
     ],
-    "manifest_version": 2
+    "manifest_version": 3
 }

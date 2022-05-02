@@ -1,5 +1,5 @@
 /* Inject scripts don't forget to add them to web_accessible_resources in manifest */
-injectScript(chrome.extension.getURL('/contentScripts/allPages/accessAllPages.js'), 'head');
+injectScript(chrome.runtime.getURL('/contentScripts/allPages/accessAllPages.js'), 'head');
 
 /* disable annoying fuckn popup */
 var popup = document.querySelector('div.ad-alert-wrapper');

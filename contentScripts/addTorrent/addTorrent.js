@@ -1,6 +1,6 @@
 /* Inject scripts don't forget to add them to web_accessible_resources in manifest */
-injectScript(chrome.extension.getURL('contentScripts/addTorrent/accessAddTorrent.js'), 'head');
-injectLink(chrome.extension.getURL("css/style.css"), 'head');
+injectScript(chrome.runtime.getURL('contentScripts/addTorrent/accessAddTorrent.js'), 'head');
+injectLink(chrome.runtime.getURL("css/style.css"), 'head');
 
 /********************************************************************/
 

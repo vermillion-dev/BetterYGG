@@ -1,5 +1,5 @@
 /* Inject scripts don't forget to add them to web_accessible_resources in manifest */
-injectScript(chrome.extension.getURL('contentScripts/search/accessSearch.js'), 'head');
+injectScript(chrome.runtime.getURL('contentScripts/search/accessSearch.js'), 'head');
 
 /********************************************************************/
 
@@ -13,7 +13,7 @@ chrome.storage.sync.get(['yggToken'], function (value) {
             var cell = table.rows[i].cells[2];
             var downloadButton = document.createElement('a')
             var downloadIcon = document.createElement('img')
-            downloadIcon.setAttribute('src', chrome.extension.getURL("img/download.png"));
+            downloadIcon.setAttribute('src', chrome.runtime.getURL("img/download.png"));
             downloadButton.appendChild(downloadIcon);
             downloadButton.setAttribute('href', "https://" + window.location.host + "/rss/download?id=" + torrentId + "&passkey=" + value.yggToken);
             cell.appendChild(downloadButton);
